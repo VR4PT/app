@@ -9,17 +9,10 @@ class PointsCube{
     Transform ElvisOriginalLocation
     OnComponentBeginOverlap()
 }
-InteractableActor <|-- GrabComponent
-class GrabComponent{
-    Bool isHeld
-    Rotator primaryGrabRelativeRotation
-    tryGrab()
-    tryRelease()
-    getHeldByHand()
-    onGrabbed()
-    onDropped()
-}
 
+class LevelFromAlpha { }
+
+Level <| -- LevelFromAlpha
 
 class VRPawn{
     tryTeleport()
@@ -42,15 +35,9 @@ class Mirror { }
 
 LateralRaiseLevel o-- Mirror
 
-class MotionControllerComponent{
-    get()
-    set()
-    isValid()
-}
 
-class AnimationBlueprint {
-    onEventUpdateAnimation()
-}
+
+
 
 class Arms {
     Transform leftHandTransform
@@ -81,22 +68,20 @@ class Hand {
     onEventUpdateAnimation()
 }
 
-AnimationBlueprint <|-- Hand
-AnimationBlueprint <|-- Arms
+
 
 class HeadMountedDisplay{ }
 
 
-VRPawn *-- MotionControllerComponent
+
 VRPawn *-- Arms
-MotionControllerComponent <-- Hand
+
 VRPawn *-- Hand
 VRPawn *-- HeadMountedDisplay
 HeadMountedDisplay <-- Arms
-MotionControllerComponent <-- Arms
+
 LateralRaiseLevel o--BigElvisWalking
 Level o-- PointsCube
 Level o-- VRPawn
-GrabComponent <|-- PointsCube
 
 ```
